@@ -1,0 +1,64 @@
+.app-nav-tabs
+  .container
+    %ul.nav.nav-tabs.nav-justified.nocontent
+      - if !@store_application.readme.nil? and !@store_application.readme.blank?
+        %li
+          %a{:href => '#readme', 'data-toggle' => 'tab'} Readme
+
+      %li
+        %a{:href => '#compose_file', 'data-toggle' => 'tab'} Compose file
+
+      - if !@store_application.report_json.nil? and !@store_application.report_json.blank?
+        %li
+          %a{:href => '#report_json', 'data-toggle' => 'tab'} Clair report
+
+      - if !@store_application.dockerfiles.nil? and !@store_application.dockerfiles.blank?
+        %li
+          %a{:href => '#dockerfiles', 'data-toggle' => 'tab'} Dockerfiles
+      %li
+        %a{:href => "#{Rails.application.config.download_url}container_logs/#{@store_application.id}.tar.gz", :target => '_blank'} Download report
+.app-nav-contents
+  .container
+    .tab-content.nocontent
+      - if !@store_application.readme.nil? and !@store_application.readme.blank?
+        .tab-pane#readme
+          = raw @store_application.readme
+
+      .tab-pane#compose_file
+        .zero-clipboard
+          %a{href: docker_fiddle_link(@store_application, nil, type='compose')}
+            %span.btn-clipboard
+              Copy to Docker Fiddle
+        %pre
+          = @store_application.compose_file
+
+
+      - if !@store_application.report_json.nil? and !@store_application.report_json.blank?
+        .tab-pane#report_json
+          = render "#{@store_application.application_type}/clair"
+
+      - if !@store_application.dockerfiles.nil? and !@store_application.dockerfiles.blank?
+        .tab-pane#dockerfiles
+          - @store_application.dockerfiles.each do |dockerfile|
+            .panel.panel-default
+              .panel-heading
+                .panel-title
+                  = dockerfile['service']
+              .panel-body
+                .zero-clipboard
+                  %a{href: docker_fiddle_link(@store_application, dockerfile['service'])}
+                    %span.btn-clipboard
+                      Copy to Docker Fiddle
+                  -#.docker_fiddle.flex
+                -#  -#TODO check this on the docker-fiddle
+                -#  %a{role: 'button', href: docker_fiddle_link(@store_application, dockerfile['service'])}
+                -#    %button.btn_new_big.mdl-js-button.gex-btn-new
+                -#      Copy to Docker Fiddle
+                %pre
+                  = preserve do
+                    = dockerfile['text']
+
+      -# This will be brought back when we'll actually be able to do something with this data
+      -#.tab-pane#image_report
+      -#  You can download the raw logs
+      -#  = link_to 'here', @store_application.report_logs_link

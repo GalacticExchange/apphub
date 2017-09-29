@@ -1,0 +1,110 @@
+{
+  "id": 1871,
+  "name": "Actionhero",
+  "github_link": "https://github.com/actionhero/actionhero",
+  "github_user": "actionhero",
+  "url_path": "actionhero",
+  "env": {
+    "haproxy": {
+      "STATS_AUTH": {
+        "service_name": "haproxy",
+        "name": "STATS_AUTH",
+        "description": "STATS_AUTH",
+        "default_value": "actionhero:actionhero",
+        "mandatory": 1,
+        "basic": 1,
+        "editable": 1
+      },
+      "STATS_PORT": {
+        "service_name": "haproxy",
+        "name": "STATS_PORT",
+        "description": "STATS_PORT",
+        "default_value": 1936,
+        "mandatory": 1,
+        "basic": 1,
+        "editable": 1
+      },
+      "MONITOR_URI": {
+        "service_name": "haproxy",
+        "name": "MONITOR_URI",
+        "description": "MONITOR_URI",
+        "default_value": "/api/status",
+        "mandatory": 1,
+        "basic": 1,
+        "editable": 1
+      }
+    },
+    "redis": {
+    },
+    "actionhero": {
+      "TCP_PORTS": {
+        "service_name": "actionhero",
+        "name": "TCP_PORTS",
+        "description": "TCP_PORTS",
+        "default_value": 80805000,
+        "mandatory": 1,
+        "basic": 1,
+        "editable": 1
+      },
+      "ENABLE_TCP_SERVER": {
+        "service_name": "actionhero",
+        "name": "ENABLE_TCP_SERVER",
+        "description": "ENABLE_TCP_SERVER",
+        "default_value": "true",
+        "mandatory": 1,
+        "basic": 1,
+        "editable": 1
+      },
+      "REDIS_HOST": {
+        "service_name": "actionhero",
+        "name": "REDIS_HOST",
+        "description": "REDIS_HOST",
+        "default_value": "redis",
+        "mandatory": 1,
+        "basic": 1,
+        "editable": 1
+      },
+      "REDIS_PORT": {
+        "service_name": "actionhero",
+        "name": "REDIS_PORT",
+        "description": "REDIS_PORT",
+        "default_value": 6379,
+        "mandatory": 1,
+        "basic": 1,
+        "editable": 1
+      },
+      "REDIS_DB": {
+        "service_name": "actionhero",
+        "name": "REDIS_DB",
+        "description": "REDIS_DB",
+        "default_value": 0,
+        "mandatory": 1,
+        "basic": 1,
+        "editable": 1
+      }
+    }
+  },
+  "services": {
+    "haproxy": {
+      "haproxy_0": {
+        "name": "haproxy_0",
+        "protocol": "http",
+        "port": "80"
+      },
+      "haproxy_1": {
+        "name": "haproxy_1",
+        "protocol": "",
+        "port": "5000"
+      },
+      "haproxy_2": {
+        "name": "haproxy_2",
+        "protocol": "",
+        "port": "1936"
+      }
+    },
+    "redis": {
+    },
+    "actionhero": {
+    }
+  }
+}

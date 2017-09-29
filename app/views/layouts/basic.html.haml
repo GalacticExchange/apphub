@@ -1,0 +1,10 @@
+- content_for :content do
+  #wrap
+    = render 'shared/header'
+    = yield
+    = render 'shared/footer'
+
+
+
+= render :template => 'layouts/application'
+

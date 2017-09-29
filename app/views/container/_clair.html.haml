@@ -1,0 +1,42 @@
+- content_for :head do
+  = javascript_include_tag :clair
+- vulnerabilities = @store_application.report_json['vulnerabilities']
+- if vulnerabilities.blank?
+  No vulnerabilities have been found in this image
+- else
+  .panel.clair_wrap.row.panel-default
+    .vulnerabilities_group.col-sm-4
+      - vulnerabilities.each_with_index do |vul, index|
+        .vulnerability.flex{'data-target' => "vul_#{index}"}
+          %div.flex-grow
+            %a.name{href: vul['link']}
+              = vul['name']
+            .package
+              = vul['package']
+          %div{class: vul_class(vul['type'])}
+            = vul['type'].capitalize
+    .clair_showcase.col-sm-8
+      - vulnerabilities.each_with_index do |vul, index|
+        .vul{id: "vul_#{index}"}
+          %table
+            %tr
+              %th Code
+              %td
+                %a.name{href: vul['link']}
+                  = vul['name']
+            %tr
+              %th Package:
+              %td
+                .package
+                  = vul['package']
+            - unless vul['fixed_version'].nil?
+              %tr
+                %th Fixed Version:
+                %td
+                  .package
+                    = vul['fixed_version']
+            %tr
+              %th Description:
+              %td
+                .description
+                  = vul['text']

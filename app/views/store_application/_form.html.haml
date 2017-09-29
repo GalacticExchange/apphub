@@ -1,0 +1,42 @@
+-# TODO make cool interactive editing tools for JSON fields
+- edit ||= false
+- content_for :head do
+  = javascript_include_tag :edit_form
+= 'Fill the highlighed fields carefully, you won\t be able to change them later' unless edit
+= simple_form_for @store_application, url: @url_path, defaults: {required: false} do |f|
+  %h2 Store Application fields
+  = f.input :github_user, required: true unless edit
+  = f.input :repo, required: true unless edit
+  = f.input :version_hash
+  = f.input :url_path, as: :string, required: true unless edit
+  = f.input :name, required: true unless edit
+  = f.input :short_description
+  = f.input :clair_rating, as: :radio_buttons, collection: %w[unknown low medium high]
+  = f.input :source_type, as: :radio_buttons, collection: %w[github community official], required: true unless edit
+  = f.input :application_type, as: :radio_buttons, collection: %w[container compose_app], required: true, wrapper_html: { class: 'hidden'}
+  = f.input :status, as: :radio_buttons, collection: %w[inactive active tty_only], required: true
+  = f.input :size
+  = f.input :ram
+  = f.input :services_json
+  = f.input :readme_file
+  #container_fields
+    %h2 Container fields
+    = f.simple_fields_for :container do |container_f|
+      = container_f.input :store_application_id, as: :hidden
+      = container_f.input :launch_options
+      = container_f.input :metadata_json
+      = container_f.input :file_name
+      = container_f.input :dockerfile
+      = container_f.input :os_whole_name
+      = container_f.input :os_short_name, as: :radio_buttons, collection: %w[debian ubuntu centos fedora alpine amazon_ami oracle opensuse kali]
+      = container_f.input :report_file
+  #compose_app_fields
+    %h2 Compose app fields
+    = f.simple_fields_for :compose_app, @store_application.compose_app do |compose_f|
+      = compose_f.input :compose_file
+      = compose_f.input :dockerfiles
+      = compose_f.input :metadata_json
+      = compose_f.input :clair_report
+      = compose_f.association :containers, label_method: :name, value_method: :id, include_blank: false,  as: :check_boxes, wrapper_html: { class: 'compose_containers_association' }
+
+  = f.button :submit

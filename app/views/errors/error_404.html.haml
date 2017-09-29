@@ -1,0 +1,15 @@
+.container
+  %h1 Page not found
+  %br
+  .alert.alert-danger
+    %p
+      The page you request doesn't exist
+      %br
+      Check address in browser
+  %p
+    Go to:
+    %ul
+      %li=link_to 'Home', root_path
+      %li=link_to 'Back', :back
+    %br
+    %br

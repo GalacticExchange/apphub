@@ -1,0 +1,31 @@
+%a{ href: "/#{store_application.github_user}/#{store_application.url_path}", class:'preview'}
+  .flex
+    .preview-text.flex-grow
+      %h2.title
+        = store_application.name
+      %h4.marg_left_10
+        = store_application.short_description
+      %ul.list-inline
+        %li
+          = image_tag "misc/#{store_application.application_type}.png", class:'app_type_icon', 'data-toggle': 'tooltip', title: 'Application type'
+        %li{class: "type-#{store_application.source_type}", 'data-toggle': 'tooltip', title: 'The application source'}
+          = store_application.source_type.capitalize
+          - if store_application.source_type.eql? 'github'
+            = " / #{store_application.github_user}"
+        %li
+          Clair rating:
+          %span{class: "security-#{store_application.clair_rating}"}
+            = store_application.clair_rating.capitalize
+        - unless store_application.os_whole_name.blank?
+          %li
+            Operating system:
+            = store_application.os_whole_name
+        - if store_application.size
+          %li
+            Size:
+            = store_application.size
+            Mb.
+        - if store_application.ram
+          %li
+            RAM:
+            = store_application.ram.nil? ? 'Unknown' : "#{store_application.ram} Mb."

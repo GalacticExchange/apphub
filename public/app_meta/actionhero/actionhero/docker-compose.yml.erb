@@ -1,0 +1,34 @@
+version: '2'
+services:
+  haproxy:
+    image: dockercloud/haproxy
+    links:
+      - actionhero
+    ports:
+      - 80:8080
+      - 5000:5000
+      - 1936:1936
+    environment:
+      - STATS_AUTH=<%= @haproxy_stats_auth %>
+      - STATS_PORT=<%= @haproxy_stats_port %>
+      - MONITOR_URI=<%= @haproxy_monitor_uri %>
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+  redis:
+    image: redis
+    environment: []
+  actionhero:
+    image: actionhero/actionhero
+    ports:
+      - 8080
+      - 5000
+    depends_on:
+      - redis
+    links:
+      - redis
+    environment:
+      - TCP_PORTS=<%= @actionhero_tcp_ports %>
+      - ENABLE_TCP_SERVER=<%= @actionhero_enable_tcp_server %>
+      - REDIS_HOST=<%= @actionhero_redis_host %>
+      - REDIS_PORT=<%= @actionhero_redis_port %>
+      - REDIS_DB=<%= @actionhero_redis_db %>

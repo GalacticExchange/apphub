@@ -1,0 +1,77 @@
+= form_tag search_path, method: :get, url: search_path, class: 'adv-search form-group', id: 'adv-search-form' do |f|
+  .field
+    = label :name, 'KeyWords'
+    = text_field_tag :name, params[:name]
+  -#.field #TODO think about
+  -#  %button.btn-clp.collapsed{type: 'button', 'data-toggle': 'collapse', 'data-target': '#os_collapse', 'aria-expanded': 'false', 'aria-controls': 'os_collapse'}
+  -#    Operating system
+  -#    %img{src: image_path('misc/down.png')}
+  -#  #os_collapse{ class: "collapse #{params[:os].nil? ? '' : 'in'}"}
+  -#    - [%w'Debian 0',%w'Ubuntu 1',%w'CentOS 2',%w'Fedora 3',%w'Alpine 4', %w'Amazon\ AMI 5', %w'Oracle 6', %w'openSUSE 7', %w'Kali 8'].each do |entry|
+  -#      .checkbox.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effectt.is-upgraded
+  -#        %label.boolean.optional
+  -#          = check_box 'os', nil, {class: 'boolean optional mdl-checkbox__input', hidden: true, checked: (!params[:os].nil? and params[:os].include?(entry[1]))}, entry[1], nil
+  -#          = entry[0]
+  .field
+    %button.btn-clp.collapsed{type: 'button', 'data-toggle': 'collapse', 'data-target': '#application_type_collapse', 'aria-expanded': 'false', 'aria-controls': 'application_type_collapse'}
+      Application type
+      %img{src: image_path('misc/down.png')}
+    #application_type_collapse{ class: "collapse #{params[:application_type].nil? ? '' : 'in'}"}
+      - [%w'Compose\ application 1', %w'Container 0'].each do |entry|
+        .checkbox.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect.is-upgraded
+          %label.boolean.optional
+            = check_box 'application_type', nil, {class: 'boolean optional mdl-checkbox__input', hidden: true, checked: (!params[:application_type].nil? and params[:application_type].include?(entry[1]))}, entry[1], nil
+            = entry[0]
+  .field
+    %button.btn-clp.collapsed{type: 'button', 'data-toggle': 'collapse', 'data-target': '#security_collapse', 'aria-expanded': 'false', 'aria-controls': 'security_collapse'}
+      Security rating
+      %img{src: image_path('misc/down.png')}
+    #security_collapse{ class: "collapse #{params[:security_rating].nil? ? '' : 'in'}"}
+      - [%w'High 3', %w'Medium 2', %w'Low 1', %w'Unknown 0'].each do |entry|
+        .checkbox.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect.is-upgraded
+          %label.boolean.optional
+            = check_box 'security_rating', nil, {class: 'boolean optional mdl-checkbox__input', hidden: true, checked: (!params[:security_rating].nil? and params[:security_rating].include?(entry[1]))}, entry[1], nil
+            = entry[0]
+  .field
+    %button.btn-clp.collapsed{type: 'button', 'data-toggle': 'collapse', 'data-target': '#source_type_collapse', 'aria-expanded': 'false', 'aria-controls': 'source_type_collapse'}
+      Image source
+      %img{src: image_path('misc/down.png')}
+    #source_type_collapse{ class: "collapse #{params[:source_type].nil? ? '' : 'in'}"}
+      - [%w'GitHub 0', %w'Official 2'].each do |entry|
+        .checkbox.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect.is-upgraded
+          %label.boolean.optional
+            = check_box 'source_type', nil, {class: 'boolean optional mdl-checkbox__input', hidden: true, checked: (!params[:source_type].nil? and params[:source_type].include?(entry[1]))}, entry[1], nil
+            = entry[0]
+  .field
+    %button.btn-clp.collapsed{type: 'button', 'data-toggle': 'collapse', 'data-target': '#status_collapse', 'aria-expanded': 'false', 'aria-controls': 'source_type_collapse'}
+      Launch type
+      %img{src: image_path('misc/down.png')}
+    #status_collapse{ class: "collapse #{params[:status].nil? ? '' : 'in'}"}
+      - [%w'Others active', %w'Console tty_only'].each do |entry|
+        .checkbox.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect.is-upgraded
+          %label.boolean.optional
+            = check_box 'status', nil, {class: 'boolean optional mdl-checkbox__input', hidden: true, checked: (!params[:status].nil? and params[:status].include?(entry[1]))}, entry[1], nil
+            = entry[0]
+  .field.from-to
+    = label_tag 'Container size (Mb)'
+    = text_field_tag :min_size, params[:min_size], placeholder: 'From'
+    = text_field_tag :max_size, params[:max_size], placeholder: 'To'
+  .field.from-to
+    = label_tag 'RAM needed (Mb)'
+    = text_field_tag :min_ram, params[:min_ram], placeholder: 'From'
+    = text_field_tag :max_ram, params[:max_ram], placeholder: 'To'
+  .field
+    = label :order_by, 'Order by'
+    = select_tag :order_by, options_for_select([%w(Name name),%w(Security security_ratings.rating),%w(Ram ram),%w(Size size)], params[:order_by])
+    = label_tag 'order_by_way-1', class: 'mdl-radio mdl-js-radio marg_top_10' do
+      %input{type: 'radio', id: 'order_by_way-1', class: 'mdl-radio__button', name: 'order_by_way', value: 'DESC', checked: (!params[:order_by_way].nil? and params[:order_by_way].match('DESC'))}
+      %span.mdl-radio__label
+        Descending
+    = label_tag 'order_by_way-2', class: 'mdl-radio mdl-js-radio marg_bott_10' do
+      %input{type: 'radio', id: 'order_by_way-2', class: 'mdl-radio__button', name: 'order_by_way', value: 'ASC', checked: (params[:order_by_way].nil? or params[:order_by_way].blank? or params[:order_by_way].match('ASC'))}
+      %span.mdl-radio__label
+        Ascending
+  .field
+    = button_tag 'Search', class: 'mdl-button mdl-js-button mdl-js-ripple-effect gex-btn-new'
+  %a{href: '#', id: 'search-filter-clear'}
+    Clear filters

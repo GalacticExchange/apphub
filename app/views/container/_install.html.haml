@@ -1,0 +1,25 @@
+%ol
+  %li
+    %a{href: @store_application.download_link} Download
+    the container image
+  %li
+    Import it by running:
+    %pre
+      %code
+        - name = @store_application.file_name.gsub '.tar.gz', ''
+        = "docker import #{@store_application.file_name} #{name.downcase} #{@store_application.container.launch_options}"
+  %li
+    Visit
+    - case @store_application.source_type
+      - when 'official'
+        %a{href: "https://hub.docker.com/_/#{@store_application.url_path}"} official hub page
+      - when 'community'
+        -#TODO make dis later Will we ever make community apps?
+        ERROR
+      - when 'github'
+        %a{href: @store_application.github_link} github repository page
+      - else
+        ERROR
+    - if !@store_application.readme.nil? and !@store_application.readme.blank?
+      or read a Readme down below
+    for further instructions

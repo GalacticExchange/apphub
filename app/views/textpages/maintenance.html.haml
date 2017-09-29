@@ -1,0 +1,24 @@
+%head
+  %title
+    Maintenance
+  %style{type:'text/css'}
+    :sass
+      .body
+        width: 500px
+        margin: 125px auto
+        font: 300 120% "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif
+      .h1
+        font-weight: 300
+
+%body.body
+  %h1.h1
+    Maintenance
+  %p
+    The system is down for maintenance as of now.
+    -#= reason ? reason : 'maintenance'
+    -#= Time.now.strftime('%F %H:%M %Z')
+    -#.
+  %p
+    It'll be back shortly
+    -#= deadline ? deadline : 'shortly'
+    -#.

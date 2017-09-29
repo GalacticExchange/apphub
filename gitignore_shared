@@ -1,0 +1,25 @@
+/.bundle
+/db/*.sqlite3
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+/bin
+/log
+/vendor
+/vendor/bundle
+.DS_Store
+.idea/
+.vagrant/
+*.swp
+.vagrant/machines/default/virtualbox/id
+
+/config/secrets.yml
+/config/deploy.rb
+/config/deploy/
+/config/application.yml
+
+/public/assets
+/public/uploads
+/public/photos
+/public/system/

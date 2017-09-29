@@ -1,0 +1,66 @@
+- content_for :title, @store_application.name
+- content_for :head do
+  %meta{:name => 'keywords', :content => "@store_application, image, docker, download, GitHub, #{@store_application.github_user}, #{@store_application.repo}"}
+= admin_buttons(@store_application)
+.title-section.marg_top_md
+  .container
+    .flex
+      %h2.marg_bott_md.flex-grow
+        = @store_application.name
+      - if @store_application.application_type.eql? 'container'
+        = download_button(@store_application)
+    %h4.marg_top_big
+      = @store_application.short_description
+    %ul.list-inline.no_marg_left
+      %li{class: "no_marg_left no_padd_left type-#{@store_application.source_type}"}
+        = @store_application.source_type.capitalize
+        - if @store_application.source_type.eql? 'github'
+          = " / #{@store_application.github_user}"
+      %li
+        Security rating:
+        %span{class: "security-#{@store_application.clair_rating}"}
+          = @store_application.clair_rating.capitalize
+      - unless @store_application.os_whole_name.blank?
+        %li
+          Operating system:
+          = @store_application.os_whole_name
+      - if @store_application.size
+        %li
+          Size:
+          = @store_application.size
+          Mb.
+      - if @store_application.ram
+        %li
+          RAM:
+          = @store_application.ram.nil? ? 'Unknown' : "#{@store_application.ram} Mb."
+    -#%div{class: "type-#{@store_application.source_type}"}
+    -#  = @store_application.source_type.capitalize
+    -#  - if @store_application.source_type.eql? 'github'
+    -#    = " / #{@store_application.github_user}"
+    -#- unless @store_application.container.nil?
+    -#  = (download_button(@store_application))
+    -#.marg_top_10
+    -#  Overall security rating:
+    -#  %span{class: "security-#{@store_application.clair_rating}"}
+    -#    = @store_application.clair_rating.capitalize
+    -#- unless @store_application.container.nil?
+    -#  = operating_system do
+    -#    = @store_application.container.os_whole_name
+    -#.marg_top_10
+    -#  Size:
+    -#  = @store_application.size
+    -#  Mb.
+    -#.marg_top_10
+    -#  RAM:
+    -#  = @store_application.ram.nil? ? 'Unknown' : "#{@store_application.ram} Mb."
+.installation
+  .container
+    %h3 Installation instructions
+    = render "#{@store_application.application_type}/install"
+= render "#{@store_application.application_type}/nav_tabs"
+
+:javascript
+  var child = $('.tab-content').children();
+  $(child[0]).addClass('active');
+  child = $('.nav-tabs').children();
+  $(child[0]).addClass('active');$('.tab-content').children()

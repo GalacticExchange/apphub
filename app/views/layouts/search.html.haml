@@ -1,0 +1,16 @@
+- content_for :head do
+  = content_for :head
+  = javascript_include_tag :search
+
+- content_for :content do
+  #wrap
+    = render 'shared/header'
+    .search-flex
+      = render partial: 'search/form'
+      .separator
+      = yield
+    = render 'shared/footer'
+
+
+
+= render :template => 'layouts/application'

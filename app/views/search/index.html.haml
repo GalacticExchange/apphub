@@ -1,0 +1,12 @@
+- content_for :title do
+  Search
+.search-results
+  - unless @store_applications.size == 0
+    - @store_applications.each do |app|
+      = render 'store_application/preview', store_application: app
+      %hr
+  - else
+    .container.text-center
+      %h3
+        No applications found
+  = will_paginate @store_applications, renderer: BootstrapPagination::Rails

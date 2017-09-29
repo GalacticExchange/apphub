@@ -1,0 +1,1 @@
+{"app_info":{"id":1612,"name":"Asciinema.org","version_hash":null,"github_link":"https://github.com/asciinema/asciinema.org","github_user":"asciinema","url_path":"asciinema.org","metrics":{"ram":340.0,"disk":3001.0}},"config":{"env":{"HOSTNAME":""}},"services":{"postgres":{"ports":[]},"redis":{"ports":[]},"sidekiq":{"ports":[]},"web":{"ports":["3001"]},"db_init":{"ports":[]}}}

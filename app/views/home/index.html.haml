@@ -1,0 +1,17 @@
+- content_for :title do
+  Home
+.flex.flex-index
+  = image_tag 'logos/logo.png', :class => 'index-logo'
+  .search
+    %section#searchbox.index-search
+      = form_tag( search_path, :method => "get", :id => "search", :class => "header_search", :style=>"width: 100%; margin-bottom: 0px; height: 40px;") do
+        = text_field_tag :name, params[:name], placeholder: "Search for containers", :class => "form-control"
+  %ul.list-inline
+    %li
+      = link_to 'FAQ', faq_url
+    %li
+      %a{href: 'http://galacticexchange.io/'}
+        Main website
+    %li
+      %a{href: 'http://hub.galacticexchange.io/info/license_agreement'}
+        License Agreement

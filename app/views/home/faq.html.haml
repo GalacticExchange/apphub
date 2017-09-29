@@ -1,0 +1,91 @@
+- content_for(:title) do
+  FAQ
+.container
+  %ul.list-unstyled
+    %li
+      %a{href:'#basic'}
+        Basic
+    %li
+      %a{href:'#security_rating'}
+        Security Rating
+    %li
+      %a{href:'#scan'}
+        Scan
+    %li
+      %a{href:'#bugs'}
+        Bugs
+
+
+  %h2#basic Basic
+  %ul.list-group
+    %li.list-group-item
+      %button{'data-toggle':'collapse', 'data-target':'#basic-1', class:'btn-link'} How do I download the image?
+      #basic-1.collapse{style: 'margin: 23px;'}
+        Press the
+        %a{role: 'button', href: '#', style: 'margin: 23px;'}
+          %button.btn_new_big.mdl-js-button.gex-btn-new
+            Download the container image
+        button on the page of the container image
+  %h2#security_rating Security Rating
+  %ul.list-group
+    %li.list-group-item
+      %button{'data-toggle':'collapse', 'data-target':'#security_rating-1', class:'btn-link'} What software did you use to scan the images for vulnerabilities?
+      #security_rating-1.collapse
+        We used the open-source software called Clair. Here is the official
+        %a{href:'https://github.com/coreos/clair'} github
+        of the project.
+    %li.list-group-item
+      %button{'data-toggle':'collapse', 'data-target':'#security_rating-2', class:'btn-link'} What does 'High', 'Medium' ... stand for?
+      #security_rating-2.collapse
+        %p
+          %span.security-high High
+          means that the image has only 'Low' severity vulnerabilities or lower, or has no vulnerabilities detected
+        %p
+          %span.security-medium Medium
+          means that the image has at least one 'Medium' severity vulnerability
+        %p
+          %span.security-low Low
+          means that the image has at least one 'High' severity vulnerability or higher
+        %p
+          %span.security-unknown Unknown
+          means that the clair could not scan the image or the image has not yet been scanned
+  %h2#scan Scan
+  %ul.list-group
+    %li.list-group-item
+      %button{'data-toggle':'collapse', 'data-target':'#scan-1', class:'btn-link'} What did you do to to scan images?
+      #scan-1.collapse
+        We have run the
+        %code
+          %a{href: 'http://man7.org/linux/man-pages/man1/strace.1.html'} strace -DTfqv -tt -s50
+        on the container image main process and read the output of that.
+        %br
+        We have also ran
+        %code
+          %a{href: 'http://man7.org/linux/man-pages/man1/ps.1.html'} ps aux
+        right after we have launched the container's main process and 90 second after that.
+        Then we have summed the amount of memory every process uses in those two cases and picked the higher value.
+        %br
+        Additionally we have tried to gather as much information on container's Operating system and the packages it has installed using these commands
+        %pre
+          %code
+            = preserve do
+              Linux version:
+              lsb_release -a
+              cat /etc/*-release
+              cat /proc/version
+              cat /etc/issue.net
+              \-------------------------
+              Kernel version:
+              uname -mrs
+              \-------------------------
+              Packages:
+              dpkg -l       //debian-based
+              \/bin/busybox
+              rpm -qa       //rpm-based
+
+  %h2#bugs Bugs
+  %ul.list-group
+    %li.list-group-item
+      %button{'data-toggle'=>'collapse', 'data-target'=>'#bugs-1', class:'btn-link'} What do I do if I have found a bug?
+      #bugs-1.collapse
+        If you have found a bug, please report it to ilya@galacticexchange.io

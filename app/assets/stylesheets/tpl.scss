@@ -1,0 +1,608 @@
+@import "colors";
+//@import "style";
+/* Sticky footer styles -------------------------------------------------- */
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+p{
+  line-height: 25px;
+  //font-size: 12pt;
+}
+
+
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  //padding: 0 0 60px;
+}
+
+
+
+#wrap > .container {
+  padding: 0px 15px 0;
+}
+
+
+
+
+#body{
+  overflow-y:hidden;
+}
+@media only screen and (max-width:767px){
+  #body{
+    overflow-y:scroll;
+  }
+}
+
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+
+
+
+
+
+/* common */
+
+
+pre{
+  display: block;
+  padding: 9.5px;
+  margin: 0px 0px 10px;
+  font-size: 13px;
+  line-height: 1.42857;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #F5F5F5;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+
+
+
+
+  //color: #272727;
+  //background-color: rgb(243, 247, 253);
+  //border: 1px solid rgba(62, 159, 240, 0.72);
+  //border-radius: 1px;
+
+
+}
+
+.no_padd_left{
+  padding-left: 0px !important;
+}
+
+
+///// INDEX
+
+
+
+
+///
+
+.list-inline > li{
+  margin: 0 10px;
+}
+
+/// SECURITY
+
+
+.security-high{
+  color: #4CAF50;
+}
+
+.security-medium{
+  color: #FF9800;
+}
+
+.security-low{
+  color: #f44336;
+}
+
+.security-unknown{
+  color: #999;
+}
+
+///
+
+
+///SEARCH ADV FORM
+
+
+
+//.adv-search select{
+//  -webkit-appearance: button;
+//  -webkit-border-radius: 2px;
+//  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+//  -webkit-padding-end: 25px;
+//  -webkit-padding-start: 1px;
+//  -webkit-user-select: none;
+//  background-image: image-url("misc/select-drop.png"), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+//  background-position: 94% center;
+//  background-repeat: no-repeat;
+//  border: 1px solid #AAA;
+//  color: #555;
+//  /* padding-right: 20px; */
+//  font-size: inherit;
+//  /* margin: 20px; */
+//  overflow: hidden;
+//  padding: 5px 10px;
+//  text-overflow: ellipsis;
+//  white-space: nowrap;
+//  width: 150px;
+//  display: block;
+//  outline: 0;
+//}
+
+//.adv-search select:focus{
+//  outline: 0;
+//}
+
+///
+
+///SEARCH PREVIEW
+
+
+
+///
+
+.color {
+  color: $col-primary !important;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.inl{
+  display: inline;
+}
+
+.undec{
+  text-decoration: none !important;
+}
+
+
+/* fonts */
+
+@font-face {
+  font-family: 'AdamB';
+  src: font-url('Adam.otf');
+}
+
+
+
+
+
+
+
+
+
+
+
+/*.cccc{
+  -webkit-box-shadow: 6px 0px 10px -1px rgba(138,138,138,0.25);
+  -moz-box-shadow: 6px 0px 10px -1px rgba(138,138,138,0.25);
+  box-shadow: 6px 0px 10px -1px rgba(138,138,138,0.25);
+
+  height: 1000px;
+}*/
+
+
+
+/* colors */
+
+
+
+
+/* elements */
+
+.rotate_180{
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+}
+
+
+.arrow{
+  width: 10px;
+  opacity: 0.8;
+  //margin: 5px 10px 0px 0px
+}
+
+
+
+
+
+
+/* side bar */
+
+
+
+
+
+ards
+
+
+
+.material_white_btn{
+  color: rgb(62, 159, 240) !important;
+  font-size: 17px !important;
+}
+
+.title-card{
+  //color: #6B6B6B;
+  color: #585858;
+  font-size: 24px;
+  text-aling: center;
+}
+
+.text-card{
+  width: 100% !important;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 16px !important;
+  padding: 10px;
+}
+
+.card-col{
+  border-left: 1px solid rgba(212, 212, 212, 0.6);
+}
+.card{
+  width: 100%;
+  margin-bottom: 4%;
+}
+.welcome_text{
+  border-bottom: 0px !important;
+  font-size: 40px !important;
+  text-transform: uppercase;
+}
+
+.sidebar_col{
+  padding-left: 0px;
+  background-color: rgba(246,246,246,0.6) !important;
+  padding-right: 0px;
+  border-right: solid 1px rgba(212, 212, 212, 0.6);
+  border-bottom: solid 1px rgba(212, 212, 212, 0.6);
+}
+
+
+
+
+
+///////// header/////////
+
+.to_website_btn{
+  padding-top: 25px;
+  //padding-right: 13px;
+}
+
+.head{
+  background-color: white !important;
+  // height: 92px;
+  height: 84px;
+  margin-top: 0px;
+  margin-bottom: 21px;
+  border-bottom: solid 1px rgba(212, 212, 212, 0.6);
+}
+
+// pages
+
+.edit_page_btn{
+  margin-top: 40px;
+}
+
+
+.cont_col{
+  padding-bottom: 20px;
+  padding-left: 20px;
+}
+
+img{
+  max-width: 1220px;
+}
+
+
+
+
+
+
+/////////////////////////////////////////// search bar
+
+input {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+}
+
+//////////////// search ////////////////
+
+
+.form-control{
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 10px 15px;
+  font-size: 15px;
+  line-height: 0;
+  color: #95a5a6;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid rgba(212,212,212,0.6);
+  border-radius: 0px;
+  box-shadow: none !important;
+  transition: none !important;
+}
+
+em {
+  font-weight: 600;
+  background-color: transparent !important;
+
+  font-style: normal;
+  color: #505050;
+}
+
+.result-block{
+  background-color: white;
+  width: 100%;
+  border: 1px solid rgba(212, 212, 212, 0.6);
+  margin-bottom: 20px
+}
+
+.result-bottom{
+  border-top: 1px solid rgba(212, 212, 212, 0.6);
+}
+.relult-link{
+  color: #006621;
+}
+.result-title{
+  color: #036DB1;
+}
+
+
+////// FOOTER
+
+.footer{
+  border-top: 1px solid #f3f3f3;
+  padding: 10px 0;
+  background: #fcfcfc;
+}
+
+
+
+
+///////////////////////////////////////////// screen sizes /////////////////////////////////////////////////////////////
+
+
+
+@media (max-width: 1600px) {
+  p img{
+    max-width:  100%;
+  }
+  ul img{
+    max-width:  100%;
+  }
+}
+
+
+
+@media (max-width: 992px) {
+
+
+
+
+  .edit_page_btn{
+    margin-top: 10px;
+  }
+
+  h1{
+    font-size: 2rem !important;
+    border-bottom: 0 !important;
+  }
+
+
+  .card-col{
+    border-left: 0px ;
+  }
+
+  .title-card{
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+  }
+
+}
+
+@media (max-width: 767px) {
+
+  .cont_col{
+    padding: 5px !important;
+  }
+
+
+  .card-col{
+    border-top: 1px solid rgba(212, 212, 212, 0.6);
+  }
+}
+
+
+@media (min-width: 992px) {
+  .sidebar_col{
+    height: 100%;
+  }
+}
+
+li ul{
+  padding-left: 0px !important;
+}
+
+
+
+// LAYOUT
+
+
+@media  (max-width : 768px) {
+  .install_left_col {
+    border-bottom: solid 1px rgba(212, 212, 212, 0.6);;
+  }
+}
+@media  (min-width : 768px) {
+
+  .main_div_size{
+    overflow-y: auto;
+    height: calc(100vh - 84px);
+  }
+
+  .flex_col_sm{
+    display: inline-flex;
+    width: 160pt;
+    min-width: 160pt;
+  }
+
+  .main_div_size{
+    overflow-y: auto;
+    height: calc(100vh - 84px);
+  }
+
+}
+
+
+@media (min-width: 992px) {
+  .flex_col_sm{
+    display: inline-flex;
+    width: 190pt !important;
+    min-width: 190pt !important;
+  }
+}
+
+.install_left_col{
+  border-right: solid 1px rgba(212,212,212,0.6);
+}
+.main{
+  padding-top: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+///////////////////////////////////////////// padd and marg commons /////////////////////////////////////////////////////////////
+
+.no_padd{padding: 0 !important;}
+.no_marg{margin: 0 !important;}
+
+
+//PADDING
+
+//px---------------------------------
+
+
+.padd_md{padding: 20px !important;}
+
+
+// no padd
+.no_padd_top{padding-top: 0 !important;}
+.no_padd_ri{padding-right: 0 !important;}
+.no_padd_bott{padding-bottom: 0 !important;}
+.no_padd_left{padding-left: 0 !important;}
+
+// padd sm
+.padd_top_sm{padding-top: 5px !important;}
+.padd_ri_sm{padding-right: 5px !important;}
+.padd_bott_sm{padding-bottom: 5px !important;}
+.padd_left_sm{padding-left: 5px !important;}
+
+//padd md
+.padd_top_md{padding-top: 20px !important;}
+.padd_ri_md{padding-right: 20px !important;}
+.padd_bott_md{padding-bottom: 20px !important;}
+.padd_left_md{padding-left: 20px !important;}
+
+//padd big
+.padd_top_big{  padding-top: 50px !important;}
+.padd_ri_big{padding-right: 50px !important;}
+.padd_bott_big{padding-bottom: 50px !important;}
+.padd_left_big{padding-left: 50px !important;}
+
+//%---------------------------------
+
+// padd sm per
+.padd_top_sm_per{padding-top: 5% !important;}
+.padd_ri_sm_per{padding-right: 5% !important;}
+.padd_bott_sm_per{padding-bottom: 5% !important;}
+.padd_left_sm_per{padding-left: 5% !important;}
+
+//padd md per
+.padd_top_md_per{padding-top: 10% !important;}
+.padd_ri_md_per{padding-right: 10% !important;}
+.padd_bott_md_per{padding-bottom: 10% !important;}
+.padd_left_md_per{padding-left: 10% !important;}
+
+//padd big per
+.padd_top_big_per{padding-top: 25% !important;}
+.padd_ri_big_per{padding-right: 25% !important;}
+.padd_bott_big_per{padding-bottom: 25% !important;}
+.padd_left_big_per{padding-left: 25% !important;}
+
+
+
+//MARGIN
+
+//px---------------------------------
+
+// no marg
+.no_marg_top{margin-top: 0 !important;}
+.no_marg_ri{margin-right: 0 !important;}
+.no_marg_bott{margin-bottom: 0 !important;}
+.no_marg_left{margin-left: 0 !important;}
+
+//marg sm
+.marg_top_sm{margin-top: 5px !important;}
+.marg_ri_sm{margin-right: 5px !important;}
+.marg_bott_sm{margin-bottom: 5px !important;}
+.marg_left_sm{margin-left: 5px !important;}
+
+//marg md
+.marg_top_md{margin-top: 20px !important;}
+.marg_ri_md{margin-right: 20px !important;}
+.marg_bott_md{margin-bottom: 20px !important;}
+.marg_left_md{margin-left: 20px !important;}
+
+//marg big
+.marg_top_big{margin-top: 50px !important;}
+.marg_ri_big{margin-right: 50px !important;}
+.marg_bott_big{margin-bottom: 50px !important;}
+.marg_left_big{margin-left: 50px !important;}
+
+//%---------------------------------
+
+//marg sm per
+.marg_top_sm_per{margin-top: 5% !important;}
+.marg_ri_sm_per{margin-right: 5% !important;}
+.marg_bott_sm_per{margin-bottom: 5% !important;}
+.marg_left_sm_per{margin-left: 5% !important;}
+
+//marg md per
+.marg_top_md_per{margin-top: 10% !important;}
+.marg_ri_md_per{margin-right: 10% !important;}
+.marg_bott_md_per{margin-bottom: 10% !important;}
+.marg_left_md_per{margin-left: 10% !important;}
+
+//marg big per
+.marg_top_big_per{margin-top: 25% !important;}
+.marg_ri_big_per{margin-right: 25% !important;}
+.marg_bott_big_per{margin-bottom: 25% !important;}
+.marg_left_big_per{margin-left: 25% !important;}

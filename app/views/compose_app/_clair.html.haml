@@ -1,0 +1,50 @@
+- content_for :head do
+  = javascript_include_tag :clair
+- if @store_application.report_json.blank?
+
+- else
+  - @store_application.report_json.each do |name, value|
+    - vulnerabilities = value['vulnerabilities']
+    - next if vulnerabilities.blank?
+    .panel.panel-default
+      .panel-heading
+        .panel-title
+          Clair report for
+          = name
+      .panel-body.clair_panel-body
+        .clair_wrap.row
+          .vulnerabilities_group.col-sm-4
+            - vulnerabilities.each_with_index do |vul, index|
+              .vulnerability.flex{'data-target' => "vul_#{name.gsub /[:\/'\.]/, '_'}#{index}"}
+                %div.flex-grow
+                  %a.name{href: vul['link']}
+                    = vul['name']
+                  .package
+                    = vul['package']
+                %div{class: vul_class(vul['type'])}
+                  = vul['type'].capitalize
+          .clair_showcase.col-sm-8
+            - vulnerabilities.each_with_index do |vul, index|
+              .vul{id: "vul_#{name.gsub /[:\/\.]/, '_'}#{index}"}
+                %table
+                  %tr
+                    %th Code
+                    %td
+                      %a.name{href: vul['link']}
+                        = vul['name']
+                  %tr
+                    %th Package:
+                    %td
+                      .package
+                        = vul['package']
+                  - unless vul['fixed_version'].nil?
+                    %tr
+                      %th Fixed Version:
+                      %td
+                        .package
+                          = vul['fixed_version']
+                  %tr
+                    %th Description:
+                    %td
+                      .description
+                        = vul['text']

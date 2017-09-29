@@ -1,0 +1,43 @@
+.app-nav-tabs
+  .container
+    %ul.nav.nav-tabs.nav-justified.nocontent
+      - if !@store_application.readme.nil? and !@store_application.readme.blank?
+        %li
+          %a{:href => '#readme', 'data-toggle' => 'tab'} Readme
+
+      - if !@store_application.report_json.nil? and !@store_application.report_json.blank?
+        %li
+          %a{:href => '#report_json', 'data-toggle' => 'tab'} Clair report
+
+      %li
+        %a{:href => '#dockerfile', 'data-toggle' => 'tab'} Dockerfile
+
+      %li
+        %a{:href => "#{Rails.application.config.download_url}container_logs/#{@store_application.id}.tar.gz", :target => '_blank'} Download report
+.app-nav-contents
+  .container
+    .tab-content.nocontent
+      - if !@store_application.readme.nil? and !@store_application.readme.blank?
+        .tab-pane#readme
+          = raw @store_application.readme
+
+      .tab-pane#report_json
+        = render "#{@store_application.application_type}/clair"
+
+      .tab-pane#dockerfile
+        .zero-clipboard
+          %a{href: docker_fiddle_link(@store_application, nil, 'dockerfile')}
+            %span.btn-clipboard
+              Copy to Docker Fiddle
+        -#.docker_fiddle.flex
+        -#  %a{role: 'button', href: docker_fiddle_link(@store_application)}
+        -#    %button.btn_new_big.mdl-js-button.gex-btn-new
+        -#      Copy to Docker Fiddle
+        %pre
+          = preserve do
+            = @store_application.dockerfile
+
+      -# This will be brought back when we'll actually be able to do something with this data
+      -#.tab-pane#image_report
+      -#  You can download the raw logs
+      -#  = link_to 'here', @store_application.report_logs_link
